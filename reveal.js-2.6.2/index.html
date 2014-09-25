@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>CSS - Back to the basics</title>
+
+    <meta name="description" content="Hier kommt die Description hin">
+    <meta name="author" content="Paolo Priotto">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<div class="slides">
+<section data-transition="none">
+    <h1>CSS</h1>
+
+    <h3>Back to the basics</h3>
+
+    <p>
+        <small>G+J Digital Products | Paolo Priotto <a href="http://twitter.com/depoulo">(@depoulo)</a></small>
+        <br />
+        <small><em>für zusätzliche Infos zu den Slides "s" drücken</em></small>
+    </p>
+</section>
+<section data-transition="none">
+    <h1>CSS</h1>
+
+    <h3><strike>Back to the basics</strike></h3>
+
+    <p>
+        <small>G+J Digital Products | Paolo Priotto <a href="http://twitter.com/depoulo">(@depoulo)</a></small>
+    </p>
+</section>
+<section data-transition="none">
+    <h1>CSS</h1>
+
+    <h3>ist scheiße kompliziert.</h3>
+
+    <p>
+        <small>G+J Digital Products | Paolo Priotto <a href="http://twitter.com/depoulo">(@depoulo)</a></small>
+    </p>
+</section>
+
+<section>
+    <img src="assets/css.gif"/>
+
+    <aside class="notes">
+        CSS ist keine gute Technologie:
+        <ul>
+            <li>Man muss für die einfachsten Dinge wissen, wie sie im Hintergrund funktioniert. (Bsp. Zentrieren)</li>
+            <li>verbirgt nicht komplexe Dinge hinter einer einfachen API</li>
+            <li>hunderte Keywords</li>
+            <li>Trotzdem haben wir alle es jahrelang intensiv genutzt, ohne all diese Hintergründe zu verstehen.</li>
+        </ul>
+        <strong>Aber heute wollen wir mal ein bisschen hinter die Kulissen schauen.</strong>
+
+        CSS ist echt schwierig und komplex.
+        Wir huschen gleich über vieles drüber, nicht alles muss man sich merken, aber
+        wenn ihr nachher raus geht, hat bitte jeder kapiert:
+        <ul><li>CSS ist echt schwierig und komplex.
+            <li>wie z-Index funktioniert.
+        </ul>
+    </aside>
+</section>
+
+
+<section>
+    <section>
+        <h2>Wie entsteht CSS?</h2>
+
+        <img src="assets/800px-Håkon_Wium_Lie.jpg" style="max-height: 50%"/>
+        <p>Erfunden 1994 von Håkon Wium Lie</p>
+        <div class="fragment">
+            <br/>
+            <font color="#8a2be2" size="8">Vorher nur Style-Attribute an HTML-Tags</font>
+            <pre><code class="html"><br/>
+    <font color="#8a2be2" size="8">Vorher nur Style-Attribute an HTML-Tags</font></code></pre>
+        </div>
+    </section>
+    <section data-transition="none">
+        <h2>Wie entsteht CSS?</h2>
+
+        <img src="assets/800px-Håkon_Wium_Lie.jpg" style="max-height: 50%"/>
+        <p>Erfunden 1994 von Håkon Wium Lie</p>
+        <br/>
+        <marquee behavior="alternate" bgcolor="yellow" scrollamount="6" scrolldelay="60"><font color="#8a2be2" size="8">Vorher nur Style-Attribute an HTML-Tags</font></marquee>
+        <pre><code class="html"><br/>
+<marquee behavior="alternate" bgcolor="yellow" scrollamount="6" scrolldelay="60">
+    <font color="#8a2be2" size="8">Vorher nur Style-Attribute an HTML-Tags</font>
+</marquee></code></pre>
+
+        <aside class="notes">
+            ...und ein paar weitere lustige Tags.
+        </aside>
+    </section>
+    <section>
+        <h2>Wie entsteht CSS?</h2>
+        <div class="fragment">
+            <p>Jeder kann Vorschläge machen, nicht nur Browserhersteller</p>
+            <p>
+                z.B. <a href="http://lea.verou.me/2013/03/preview-border-corner-shape-before-implementations/">Lea Verou</a>, <a href="http://webplatform.adobe.com/">Adobe</a>
+            </p>
+        </div>
+        <p class="fragment">Bis aus einem Vorschlag ein Standard wird, ist es meist <a href="http://www.golem.de/news/webstandards-haben-css-regions-eine-zukunft-1401-104204.html">ein weiter Weg</a> <a href="http://lea.verou.me/2013/03/border-corner-shape-is-in-danger-and-you-can-help/">mit ungewissem Ausgang</a>.</p>
+    </section>
+    <section>
+        <h2>Wie entsteht CSS?</h2>
+        <p>Feedback aus der Entwicklergemeinde ist wichtig und wird auch eingefordert.</p>
+        <p>Beispiele: <a href="http://alistapart.com/blog/post/ten-css-one-liners-to-replace-native-apps">Håkon Wium Lie</a>, <a href="http://lea.verou.me/2014/07/an-easy-notation-for-grayscale-colors/">Lea Verou</a>, <a href="http://msdn.microsoft.com/de-de/library/ie/hh673533(v=vs.85).aspx">Microsoft</a>.
+
+        <aside class="notes">
+            Zufälliger Wikipedia-Artikel -> columns: 25em
+        </aside>
+    </section>
+    <section>
+        <h2>Wie entsteht CSS?</h2>
+        <p>Unterscheidung CSS- vs. proprietäre Browser-Features</p>
+        <p></p><a href="https://gist.github.com/depoulo/5832073">Beispiel -webkit-line-clamp</a></p>
+        <p class="fragment"><a href="http://www.smashingmagazine.com/2011/05/11/the-future-of-css-experimental-css-properties/">Gute Übersicht</a></p>
+
+        <aside class="notes">
+            Vorführung webkit-line-clamp direkt im Browser:
+            <pre><code>
+overflow: hidden;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+</code></pre>
+            <a href="http://alistapart.com/article/every-time-you-call-a-proprietary-feature-css3-a-kitten-dies">Every time you call a proprietary feature CSS3, a kitten dies</a>
+        </aside>
+    </section>
+    <section>
+        <h2>Wie entsteht CSS?</h2>
+        <p>Manche Dinge sind auch <a href="https://twitter.com/LeaVerou/status/356718857899098113">ungenau spezifiziert</a>.</p>
+        <p class="fragment">Oder auch <a href="http://stackoverflow.com/questions/17526370/position-relative-not-working-with-display-table-cell#answer-17527089">gar nicht</a>.</p>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Warum gibt es dieses oder jenes nicht in CSS?</h2>
+
+        <p>Incremental rendering (keine Reflows)</p>
+    <div class="fragment">
+        <pre>
+<code class="css">h5:parent {
+    float: left;
+}</code></pre>
+        <p>-> praktisch, aber doof</p>
+    </div>
+    </section>
+    <section>
+        <h2>Warum gibt es dieses oder jenes nicht in CSS?</h2>
+
+        <p>CSS-Regeln müssen in allen edge cases durchspezifiziert werden.</p>
+        <p class="fragment">CSS-Regeln werden zweckentfremdet und müssen auch dann noch überall gleich funktionieren.</p>
+        <div class="fragment">
+            <pre><code class="css">#page-wrapper {
+    float: center;
+}</code></pre>
+                <p>-> praktisch, aber super komplex (und <a href="http://css-tricks.com/centering-css-complete-guide/">geht ja auch ohne</a>)</p>
+        </div>
+    </section>
+</section>
+
+<section>
+    <h2>Layout in CSS</h2>
+    <p class="fragment">...ist <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Visual_formatting_model">scheiße kompliziert</a></p>
+    <p class="fragment">Aber im Grunde doch simpel:</p>
+    <p class="fragment">Alles ist ein Block mit padding, border, margin</p>
+    <p class="fragment">Alles wird entweder horizontal angeordnet (inline-Elemente)</p>
+    <p class="fragment">oder vertikal (Block-Elemente)</p>
+    <p class="fragment">Blöcke enthalten Blöcke</p>
+    <p class="fragment">Und dann gibt es noch Float...</p>
+</section>
+
+<section>
+    <section>
+        <h2>Generated Content</h2>
+        <style>
+.gc-example,
+.gc-example::before,
+.gc-example::after {
+    display: block;
+}
+.gc-example {
+    border: 2px solid transparent !important;
+}
+.gc-example::before {
+    content: "Ich bin das Before-Element.";
+    color: crimson;
+}
+.gc-example::after {
+    content: url(assets/bush.gif);
+}
+        </style>
+        <a onclick="this.classList.toggle('gc-example')">Codebeispiel<br/>(<em>Wo im DOM sind die zusätzlichen Elemente?</em>)</a>
+
+        <aside class="notes">
+            "Element untersuchen" auf "Codebeispiel".
+        </aside>
+    </section>
+    <section>
+        <h2>Generated Content</h2>
+        <p>:: vs. :</p>
+<style>
+.gc-example-hidden {
+    visibility: hidden;
+}
+.gc-example-2 {
+    visibility: visible !important;
+}
+.gc-example-2::first-letter {
+    color: dodgerblue;
+}
+.gc-example-2::first-line {
+    color: crimson;
+}
+</style>
+        <p class="fragment">
+            :: für <em>generated content</em>: ::before, ::after <a class="fragment" onclick="this.parentElement.nextElementSibling.className='gc-example-2'">, ::first-letter, ::first-line</a><strike class="fragment">, ::first-word</strike>
+        </p>
+        <blockquote style="margin: .5em auto" class="gc-example-hidden">
+            Hier steht eine Menge Text. Hier steht eine Menge Text. Hier steht eine Menge Text.
+        </blockquote>
+        <p class="fragment">
+            : für <em>Pseudo-Selektoren</em> <span class="fragment">(:hover)</span>
+        </p>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>Pseudo-Selektoren</h2>
+
+        <div id="pseudo-example">
+            <h4>Kinder, Kinder</h4>
+            <ol>
+                <li>:first-child, :last-child</li>
+                <li>:first-of-type, :last-of-type</li>
+                <li>:nth-of-type, :nth-last-of-type</li>
+            </ol>
+            <br/>
+            <br/>
+            <h4>Sonstige</h4>
+            <ol>
+                <li>:empty</li>
+                <li></li>
+                <daugther class="zwölfte gymnasium">Erstgeborene Tochter</daugther>
+                <son class="fünfte hauptschule">Erstgeborener Sohn</son>
+                <daugther class="dritte grundschule">Zweitgeborene Tochter</daugther>
+                <son class="erste grundschule">Zweitgeborener Sohn</son>
+                <li class="dummy">Weitere</li>
+                <li class="dummy">Dummy</li>
+                <li class="dummy">Einträge</li>
+            </ol>
+            <br />
+            <br />
+            <h4 class="fragment">Bonus: Adjazenz-Selektor, Geschwister-Selektor</h4>
+        </div>
+
+        <aside class="notes">
+            <ol>
+                <li>Konsole auf</li>
+                <li>document.querySelectorAll('#pseudo-example .dummy:last-of-type')</li>
+                <li>document.querySelectorAll('#pseudo-example .dummy:first-of-type')</li>
+                <li>document.querySelectorAll('#pseudo-example ol:first-of-type')</li>
+                <li>document.querySelectorAll('#pseudo-example li:first-of-type')</li>
+                <li>document.querySelectorAll('#pseudo-example son:first-of-type')</li>
+                <li>document.querySelectorAll('#pseudo-example .dummy + .dummy')</li>
+                <li>document.querySelectorAll('#pseudo-example ol + ol')</li>
+                <li>document.querySelectorAll('#pseudo-example ol ~ ol')</li>
+                <li>document.querySelectorAll('#pseudo-example daughter ~ daughter')</li>
+            </ol>
+        </aside>
+
+    </section>
+
+    <section>
+        <h2>Pseudo-Selektoren</h2>
+        <h4>Zusammenfassung:</h4>
+        <p>Kinder ihrer gemeinsamen Eltern im Bezug aufeinander</p>
+        <p>x-of-type bezieht sich auf den Tagnamen, nicht den Klassennamen</p>
+        <a href="http://css-tricks.com/pseudo-class-selectors/">Gute Übersicht</a>
+        <br />
+        <br />
+        <h4 class="fragment">Reicht?</h4><a onclick="var jq = document.createElement('script');jq.src = '//code.jquery.com/jquery-1.11.0.min.js';document.head.appendChild(jq);" class="fragment">Bonus: ol:has(.dummy)</a>
+
+        <aside class="notes">
+            <p>Klick auf "ol:has(.dummy)" lädt jQuery. Dann in der Konsole "$('ol:has(.dummy)')".</p>
+            <p><a href="http://api.jquery.com/has-selector/">Bisher nur über jQuery</a></p>
+            <p><a href="http://dev.w3.org/csswg/selectors4/#relational">Kommt in CSS4</a></p>
+        </aside>
+    </section>
+</section>
+
+<section>
+    <section>
+        <h2>z-Index</h2>
+
+        <p>
+            Wird <a href="https://medium.com/@fat/mediums-css-is-actually-pretty-fucking-good-b8e2a6c78b06">oft</a> <a href="https://core.trac.wordpress.org/changeset/24753">falsch</a> <a href="http://www.iab.net/guidelines/508676/508767/displayguidelines#solidmark_x_TitlePane_6">verstanden.</a>
+        </p>
+        <p></p><a href="http://dabblet.com/gist/5040072">In Wirklichkeit funktioniert es so</a></p>
+    </section>
+
+    <section>
+        <h2>z-Index</h2>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context#The_example">Stichwort stacking context</a></p>
+
+            <blockquote>Each stacking context is completely independent from its siblings: only descendant elements are considered when stacking is processed.</blockquote>
+                <- klar, incremental rendering
+        </p>
+    </section>
+    <section>
+        <h2>z-Index</h2>
+        <p>"Das wusste ich schon, das ist doch logisch."</p>
+        <p class="fragment"><a href="http://nicolasgallagher.com/css-drop-shadows-without-images/demo/">Dann gibt es noch ein paar Details.</a></p>
+        <p class="fragment">Kindelemente können in der stacking order hinter ihren Elternelementen liegen.</p>
+        <p class="fragment"><a href="http://philipwalton.com/articles/what-no-one-told-you-about-z-index/">Kleines Rätsel gefällig?</a></p>
+        <p class="fragment"><span class="cfragment">Naja wenigstens funktioniert dass in allen Browsern gleich</span><a class="fragment" href="http://updates.html5rocks.com/2012/09/Stacking-Changes-Coming-to-position-fixed-elements"> ...nicht</a></p>
+    </section>
+</section>
+
+<section>
+    <h3>Spezifizität (Hacks)</h3>
+    <p class="fragment">[id=wrapper]</p>
+    <p class="fragment">.teaser.teaser.teaser</p>
+    <p class="fragment">html > body .teaser</p>
+    <p class="fragment">!important<span class="fragment"> <- niemals!</span></p>
+
+    <aside class="notes">
+        <a href="http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/?utm_source=CSS-Weekly&utm_campaign=Issue-120&utm_medium=email">Quelle</a>
+    </aside>
+</section>
+
+<section>
+    <p>Danke.</p>
+    <img src="assets/thx.gif"/>
+</section>
+
+</div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: false,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            } },
+            { src: 'plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function () {
+                return !!document.body.classList;
+            } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>
